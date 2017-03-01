@@ -18,6 +18,7 @@ function message(){
 			}
 }
 function showOrders(){
+	
 	$("#content").empty();
 	$.ajax({
 		type : 'GET',
