@@ -28,7 +28,6 @@ import rs.ac.uns.ftn.informatika.jpa.service.ManagerService;
 import rs.ac.uns.ftn.informatika.jpa.service.OrderService;
 import rs.ac.uns.ftn.informatika.jpa.service.ReservationService;
 import rs.ac.uns.ftn.informatika.jpa.service.ReservedTablesService;
-import rs.ac.uns.ftn.informatika.jpa.service.WorkScheduleService;
 
 @Controller 
 @RequestMapping("/billController")
@@ -37,8 +36,6 @@ public class BillController {
 	private BillService billService;
 	@Autowired
 	private OrderService orderService;
-	@Autowired
-	private WorkScheduleService workScheduleService;
 	@Autowired
 	private EmployeeService employeeService;
 	@Autowired

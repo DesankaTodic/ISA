@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.informatika.jpa.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,6 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import rs.ac.uns.ftn.informatika.jpa.domain.users.Provider;
 
