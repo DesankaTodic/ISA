@@ -10,23 +10,13 @@ window.onload = function() {
 				$('#listaRestorana').empty();
 				for(var i = 0 ; i < data.length ; i++){
 					
-					var item = data[i];
-					
-							 $('#listaRestorana').append('<img src="rest1.jpg" alt="description here"  height="200" width="200" id = "'+item.id+'" onclick="OpenPicture()"/>'+
-								 	'<input type = "button" onclick="OtvoriRestoran()" id ="'+item.id+'" value="'+item.name+'"> ' +
-								 	'<input type = "button" onclick="PronadjiRestoran()" id ="'+item.id+'" value="'+item.address+'">'+
-							' <input type = "button" onclick="Informacije()" id ="'+item.id+'"  value="Informacije">');
-							 
-						
-							 
-							 if(i%2 == 1){
-									$("#listaRestorana").append("<br/><br/><br/><br/>");
-								}
-				
-					
-					
-					
-					
+					 var item = data[i];
+					 $('#listaRestorana').append('<img src="rest1.jpg" alt="description here"  height="200" width="200" id = "'+data[i].id+'" onclick="OpenPicture()"/>'+
+						 	'<input type = "button" onclick="OtvoriRestoran()" id ="'+data[i].id+'" value="'+data[i].name+'"> ' +
+						 	'<input type = "button" onclick="PronadjiRestoran()" id ="'+data[i].id+'" value="'+data[i].address+'">');
+					 if(i%3 == 2){
+							$("#listaRestorana").append("<br/><br/><br/><br/>");
+						}
 					 
 				}	
 		},
@@ -36,6 +26,8 @@ window.onload = function() {
 	});//kraj ajax poziva za id
  
 };
+
+
 
 
 function OpenPicture(){
@@ -118,31 +110,6 @@ function OtvoriRestoran(){
 }
 
 
-function Informacije(){
-	
-	var idGuest = -1;
-	var id = Informacije.caller.arguments[0].target.id;
-	
-	
-	
-	$.ajax({
-		type : 'GET',
-		dataType : 'json',
-		url :'/ratingAllController/takeMarksForGuest/'+id,
-		success : function(data){
-			
-			alert("Prosjecna ocjena :"+ data);
-		  	
-				
-		},
-	error : function(XMLHttpRequest, textStatus, errorThrown) {
-		alert("Problem sa pronalazenjem id-ja");
-	}	
-	});//kraj ajax poziva za id
-	
-
-}
-
 $(document).on('click','#submitSmene', function(e){
 
 	e.preventDefault();
@@ -154,15 +121,6 @@ $(document).on('click','#submitSmene', function(e){
 	var idGuest = $('#idGuest').val();
 	var smene = $('#radneSmene option:selected').val();
 
-if(dateStart == ""){
-	alert("You have to choose date ");
-
-}else if(timeStart == ""){
-	alert("You have to choose time ");
-	
-}else if(smene == ""){
-	alert("You have to choose duration ");
-}else{
 	$('#listaRestorana').empty();
 	$('#datum').empty();
 	
@@ -222,6 +180,7 @@ if(dateStart == ""){
 				
 			
 				
+/////////////////////////////////////////////				
 				$.ajax({
 					type: 'POST',
 					contentType : 'application/json',
@@ -246,14 +205,21 @@ if(dateStart == ""){
 					}	
 				});	
 				
-		
+				
+				
+				
+				
+				
+	//////////////////////			
+				
+				
 				
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
 				alert("Tables ERROR: " + errorThrown);
 			}	
 		});
-}
+		
 	
 });
 

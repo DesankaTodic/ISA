@@ -14,8 +14,8 @@ $(document).on('click','#restoran',function(e){
 		'Kontakt:<input type = "text" id = "kontaktRestorana" class="in-text"/><br/>'+
 		'Geografska sirina:<input type = "text" id = "sirinaRestorana" class="in-text"/><br/>'+
 		'Geofrafska duzina:<input type = "text" id = "duzinaRestorana" class="in-text"/><br/>'+
-		'<input type = "submit" id = "lokacijaRestorana" value="Vidi lokaciju" class="btn orange"><br/><br/>'+
-		'<input type = "submit" id = "submitIzmenaRestorana" value="Potvrdi" class="btn orange">'+
+		'<input type = "button" id = "lokacijaRestorana" value="izaberi lokacija" >'+
+		'<input type = "submit" id = "submitIzmenaRestorana" value="Submit" class="btn orange">'+
 		'</form></div></div></div></div>');
 	
 	$.ajax({
@@ -33,12 +33,11 @@ $(document).on('click','#restoran',function(e){
 		},
 
 		error : function(XMLHttpRequest, textStatus, errorThrown) { 
-			toastr.error("AJAX ERROR: " + errorThrown);
+			alert("AJAX ERROR: " + errorThrown);
 		}
 	});
 	
 });
-
 
 $(document).on('click','#submitIzmenaRestorana',function(e){
 	e.preventDefault();
@@ -48,18 +47,14 @@ $(document).on('click','#submitIzmenaRestorana',function(e){
 	var type = $('#vrstaRestorana').val();
 	var sirina = $('#sirinaRestorana').val();
 	var duzina = $('#duzinaRestorana').val();
+	var drinks = [];
+	var meals = [];
 	if(name == ""){
-		toastr.error("Ime je prazno");
+		alert("Ime je prazno");
 	}else if(address == ""){
-		toastr.error("Adresa je prazna");
+		alert("Adresa je prazna");
 	}else if(contact == ""){
-		toastr.error("Kontakt je prazan");
-	}else if(type == ""){
-		toastr.error("Tip restorana je prazan");
-	}else if(sirina == "" || isNaN(sirina)){
-		toastr.error("Unesite geografsku sirinu (BROJ)");
-	}else if(duzina == "" || isNaN(duzina)){
-		toastr.error("Unesite geografsku duzinu (BROJ)");
+		alert("Kontakt je prazno");
 	}else{
 		
 		var data2 = JSON.stringify({
@@ -77,12 +72,12 @@ $(document).on('click','#submitIzmenaRestorana',function(e){
 			dataType : 'json',
 			data : data2,
 			success : function(data){
-				toastr.info(data.id);
+				alert(data.id);
 				window.location.reload();
 			},
 
 			error : function(XMLHttpRequest, textStatus, errorThrown) { //(XHR,STATUS, ERROR)
-				toastr.error("AJAX ERROR: " + errorThrown);
+				alert("AJAX ERROR: " + errorThrown);
 			}
 		});
 	}
@@ -102,7 +97,7 @@ $(document).on('click','#izmeniPodatke',function(e){
 				'Ime:<input type = "text" id = "imeMenadzera" class="in-text"/><br/>'+
 				'Prezime:<input type = "text" id = "prezimeMenadzera" class="in-text"/><br/>'+
 				'Adresa:<input type = "text" id = "adresaMenadzera" class="in-text"/><br/>'+
-				'Email:<input type = "text" id = "emailMenadzera" class="in-text" readonly="true"/><br/>'+
+				'Email:<input type = "text" id = "emailMenadzera" class="in-text"/><br/>'+
 				'Kontakt:<input type = "text" id = "kontaktMenadzera" class="in-text"/><br/>'+
 				'Lozinka:<input type = "text" id = "lozinkaMenadzera" class="in-text"/><br/>'+
 				'<input type = "submit" id = "submit" value="Submit" class="btn orange">'+
@@ -122,8 +117,9 @@ $(document).on('click','#izmeniPodatke',function(e){
 			$('#lozinkaMenadzera').val(data.password);
 		},
 
-		error : function(XMLHttpRequest, textStatus, errorThrown) { 
-			toastr.error("AJAX ERROR: " + errorThrown);
+		error : function(XMLHttpRequest, textStatus, errorThrown) { //(XHR,STATUS, ERROR)
+			alert("Da li je ovdje problem");
+			alert("AJAX ERROR: " + errorThrown);
 		}
 	});
 	
@@ -140,15 +136,11 @@ $(document).on('submit','#izmenaMenadzera',function(e){
 	var password = $('#lozinkaMenadzera').val();
 	
 	if(name == ""){
-		toastr.error("Ime je prazno");
-	}else if(surname == ""){
-		toastr.error("Prezime je prazno");
+		alert("Ime je prazno");
 	}else if(address == ""){
-		toastr.error("Adresa je prazna");
+		alert("Adresa je prazna");
 	}else if(contact == ""){
-		toastr.error("Kontakt je prazan");
-	}else if(password == ""){
-		toastr.error("Lozinka je prazna");
+		alert("Kontakt je prazno");
 	}else{
 		
 		var dataa = JSON.stringify({
@@ -170,12 +162,12 @@ $(document).on('submit','#izmenaMenadzera',function(e){
 			dataType : 'json',
 			data : dataa,
 			success : function(data){
-				toastr.info(data.id);
+				alert(data.id);
 				window.location.reload();
 			},
 
 			error : function(XMLHttpRequest, textStatus, errorThrown) { //(XHR,STATUS, ERROR)
-				toastr.error("AJAX ERROR: " + errorThrown);
+				alert("AJAX ERROR: " + errorThrown);
 			}
 		});
 	}
@@ -190,17 +182,17 @@ $(document).on('click','#dodajRadnika',function(e){
 	$('#content').append('<div id="wraper"><div class="centered-content-wrap" id="first">'+
 			'<div class="login-page wrapper centered centered-block"> <div class = "form-group">'+
 				'<form method="post" id="registracijaMenadzera">'+
-					'Podaci o radniku:<br/><br/>Vrsta:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'+
+					'Podaci o radniku:<br/><br/>Vrsta:'+
 					'<select id="vrstaRadnika"><option value="saladCook">salad - cook</option>'+
 					'<option value="cook">cooked meals  - cook</option><option value="grilledCook">grilled dish - cook</option>'+
 				'<option value="waiter">waiter</option><option value="barman">barman</option></select>'+
-					'<br/><br/>Ime:<input type = "text" id = "imeRadnika" class="in-text"/>'+
+					'<br/>Ime:<input type = "text" id = "imeRadnika" class="in-text"/>'+
 					'<br/>Prezime:<input type = "text" id = "prezimeRadnika" class="in-text"/>'+
 					'<br/>Email:<input type = "text" id = "emailRadnika" class="in-text"/>'+
-					'<br/>Datum rodjenja:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type = "date" id = "rodjenjeRadnika" class="in-text"/>'+
-					'<br/><br/>Konfekcijski broj:'+
+					'<br/>Datum rodjenja:<input type = "date" id = "rodjenjeRadnika" class="in-text"/>'+
+					'<br/>Konfekcijski broj:'+
 					'<input type = "text" id = "konfekcijskiRadnik" class="in-text"/>'+
-					'<br/>Velicina obuca:<input type = "text" id = "obucaRadnik" class="in-text"/><br/>'+
+					'<br/>Velicina obuca:<input type = "text" id = "obucaRadnik" class="in-text"/>'+
 					'<br/><input type = "submit" id = "submitNewEmployee" value="Submit" class="btn orange">'+
 					'</form></div></div></div></div>');
 });
@@ -219,19 +211,17 @@ $(document).on('click','#submitNewEmployee',function(e){
 	var accept = "false";
 	var password = "111";
 	if(name == ""){
-		toastr.error("Ime je prazno");
+		alert("Ime je prazno");
 	}else if(surname == ""){
-		toastr.error("Prezime je prazno");
-	}else if(email == ""){
-		toastr.error("Email je prazan");
+		alert("Prezime je prazno");
 	}else if(date == ""){
-		toastr.error("Datum rodjenja je prazan");
+		alert("Datum rodjenja je prazan");
 	}else if(type ==""){
-		toastr.error("Vrsta je prazna");
+		alert("Vrsta je prazna");
 	}else if(konfekc ==""){
-		toastr.error("Konfekcijski broj je prazan");
+		alert("Konfekcijski broj je prazan");
 	}else if(obuca ==""){
-		toastr.error("Informacije o obuci su prazne");
+		alert("Informacije o obuci su prazne");
 	}else{
 		var data2 = JSON.stringify({
 			"role" : type,
@@ -253,12 +243,12 @@ $(document).on('click','#submitNewEmployee',function(e){
 			dataType : 'json',
 			data : data2,
 			success : function(data){
-				toastr.info(data.id);
+				alert(data.id);
 				window.location.reload();
 			},
 
 			error : function(XMLHttpRequest, textStatus, errorThrown) { //(XHR,STATUS, ERROR)
-				toastr.error("AJAX ERROR: " + errorThrown);
+				alert("AJAX ERROR: " + errorThrown);
 			}
 		});
 	}
@@ -279,7 +269,7 @@ $(document).on('click','#dodajPonudjaca',function(e){
 					'Adresa:<input type = "text" id = "adresaPonudjaca" class="in-text"/><br/>'+
 					'Email:<input type = "text" id = "emailPonudjaca" class="in-text"/><br/>'+
 					'Kontakt:<input type = "text" id = "kontaktPonudjaca" class="in-text"/><br/>'+
-					'Lozinka:<input type = "password" id = "lozinkaPonudjaca" class="in-pass"/><br/><br/>'+
+					'Lozinka:<input type = "password" id = "lozinkaPonudjaca" class="in-text"/><br/>'+
 					'<input type = "submit" id = "submitNewProvider" value="Submit" class="btn orange">'+
 					'</form></div></div></div>');
 });
@@ -309,17 +299,15 @@ $(document).on('click','#submitNewProvider',function(e){
 	});
 	
 	if(name == ""){
-		toastr.error("Ime je prazno");
+		alert("Ime je prazno");
 	}else if(surname == ""){
-		toastr.error("Prezime je prazno");
+		alert("Prezime je prazno");
 	}else if(address == ""){
-		toastr.error("Adresa je prazna");
+		alert("Adresa je prazna");
 	}else if(email == ""){
-		toastr.error("Email je prazan");
+		alert("Email je prazan");
 	}else if(contact == ""){
-		toastr.error("Kontakt je prazan");
-	}else if(password == ""){
-		toastr.error("Lozinka je prazna");
+		alert("Kontakt je prazan");
 	}else{
 		$.ajax({
 			type : 'POST',
@@ -328,12 +316,12 @@ $(document).on('click','#submitNewProvider',function(e){
 			dataType : 'json',
 			data : dataa,
 			success : function(data){
-				toastr.info(data.id);
+				alert(data.id);
 				window.location.reload();
 			},
 
 			error : function(XMLHttpRequest, textStatus, errorThrown) { //(XHR,STATUS, ERROR)
-				toastr.error("AJAX ERROR: " + errorThrown);
+				alert("AJAX ERROR: " + errorThrown);
 			}
 		});
 	}
@@ -348,9 +336,9 @@ $(document).on('click','#dodajPonudu',function(e){
 		'<div class="login-page wrapper centered centered-block">'+
 		'<div class = "form-group"><form method="post" id="submitDodajPonudu">'+
 		'Podaci o ponudi:<br/><br/>'+
-		'Zavrsetak ponude:&nbsp&nbsp&nbsp&nbsp<input type = "date" id = "krajPonude" class="in-text"/><br/><br/>'+
-		'Izaberi namirnicu ili pice:&nbsp&nbsp&nbsp&nbsp<select id="foodAndDrink"> </select><br/><br/>'+
-		'Potrebna kolicina:<input type = "text" id = "kolicina" class="in-text"/><br/><br/>'+
+		'Datum zavrsetka ponude:<input type = "date" id = "krajPonude" class="in-text"/><br/>'+
+		'Izaberi namirnicu ili pice:<select id="foodAndDrink"> </select><br/><br/><br/>'+
+		'Potrebna kolicina:<input type = "text" id = "kolicina" class="in-text"/><br/>'+
 			'<input type = "submit" id = "submit" value="Submit" class="btn orange">'+
 			'</form></div></div></div></div>');
 	
@@ -368,7 +356,7 @@ $(document).on('click','#dodajPonudu',function(e){
 			});
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			toastr.error("Admin ERROR: " + errorThrown);
+			alert("Admin ERROR: " + errorThrown);
 		}	
 	});
 	
@@ -385,7 +373,7 @@ $(document).on('click','#dodajPonudu',function(e){
 			});
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			toastr.error("Admin ERROR: " + errorThrown);
+			alert("Admin ERROR: " + errorThrown);
 		}	
 	});
 });
@@ -400,35 +388,29 @@ $(document).on('submit','#submitDodajPonudu',function(e){
 	var restaurant = "";
 	var amount = $('#kolicina').val();
 	var datum = $('#krajPonude').val();
-	if(datum == ""){
-		toastr.error("Izaberite datum!");
-	}else if(amount == "" || isNaN(amount)){
-		toastr.error("Unesite kolicinu! (BROJ)");
-	}else{
-		var data2 = JSON.stringify({
-			"endDate" : datum,
-			"foodOrDrink" : foodAndDrink,
-			"flag" : flag,
-			"restaurant" : null,
-			"amount" : amount,
-			"accepted" : false
-		});
-		$.ajax({
-			type : 'POST',
-			url :  '/mealAndDrinkController/addOffer',
-			contentType : 'application/json',
-			dataType : 'json',
-			data : data2,
-			success : function(data){
-				toastr.info(data.id);
-				window.location.reload();
-			},
-	
-			error : function(XMLHttpRequest, textStatus, errorThrown) { //(XHR,STATUS, ERROR)
-				toastr.error("AJAX ERROR: " + errorThrown);
-			}
-		});
-	}
+	var data2 = JSON.stringify({
+		"endDate" : datum,
+		"foodOrDrink" : foodAndDrink,
+		"flag" : flag,
+		"restaurant" : null,
+		"amount" : amount,
+		"accepted" : false
+	});
+	$.ajax({
+		type : 'POST',
+		url :  '/mealAndDrinkController/addOffer',
+		contentType : 'application/json',
+		dataType : 'json',
+		data : data2,
+		success : function(data){
+			alert(data.id);
+			window.location.reload();
+		},
+
+		error : function(XMLHttpRequest, textStatus, errorThrown) { //(XHR,STATUS, ERROR)
+			alert("AJAX ERROR: " + errorThrown);
+		}
+	});
 });
 
 
@@ -438,7 +420,7 @@ $(document).on('click','#aktuelnePonude',function(e){
 	$('#mica_mapa').empty();
 	$('#ubaci_mapu').empty();
 	$('#content').append('<table id="tabelaPrikaz"><tr><th>NAMIRNICA/PICE</th><th>FLAG</th><th>KOLICINA</th>'+
-			'<th>KRAJNJI ROK</th><th></th></tr></table>');
+			'<th>KRAJNJI ROK</th></tr></table>');
 	
 	$.ajax({
 		type: 'GET',
@@ -447,7 +429,8 @@ $(document).on('click','#aktuelnePonude',function(e){
 		success : function(data){
 			var list = data == null ? [] : (data instanceof Array ? data : [ data ]);
 			$.each(list, function(index,ponuda){
-				
+				//var date1 = new Date();
+				//var date2 = new Date(ponuda.endDate);
 				if( ponuda.accepted==false)
 			    {
 				$('#tabelaPrikaz').append('<tr><td>'+ponuda.foodOrDrink+'</td><td>'+ponuda.flag+'</td><td>'
@@ -459,7 +442,7 @@ $(document).on('click','#aktuelnePonude',function(e){
 			});
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			toastr.error("Admin ERROR: " + errorThrown);
+			alert("Admin ERROR: " + errorThrown);
 		}	
 	});
 	
@@ -472,7 +455,7 @@ $(document).on('submit','#formVidiPonude',function(e){
 	$('#content').empty();
 	$('#mica_mapa').empty();
 	$('#ubaci_mapu').empty();
-	$('#content').append('<table id="tabelaPrikaz"><tr><th>CENA DOSTAVE</th><th>VREME DOSTAVE</th><th>ID PONUDJACA</th><th></th></tr></table>');
+	$('#content').append('<table id="tabelaPrikaz"><tr><th>CENA DOSTAVE</th><th>VREME DOSTAVE</th><th>ID PONUDJACA</th>/tr></table>');
 	var id = $(this).find("input[type=hidden]").val();
 	var data = JSON.stringify({
 		"id" : id,
@@ -507,7 +490,7 @@ $(document).on('submit','#formVidiPonude',function(e){
 			});
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			toastr.error("Admin ERROR: " + errorThrown);
+			alert("Admin ERROR: " + errorThrown);
 		}	
 	});
 	
@@ -550,7 +533,7 @@ $(document).on('submit','#formPrihvatiPonudu',function(e){
 			dataType : 'json',
 			data : data2,
 			success : function(data){
-				toastr.info(data.id);
+				alert(data.id);
 				
 				$.ajax({
 					type : 'POST',
@@ -565,7 +548,7 @@ $(document).on('submit','#formPrihvatiPonudu',function(e){
 			},
 
 			error : function(XMLHttpRequest, textStatus, errorThrown) { //(XHR,STATUS, ERROR)
-				toastr.error("AJAX ERROR: " + errorThrown);
+				alert("AJAX ERROR: " + errorThrown);
 			}
 		});
 });
@@ -582,7 +565,7 @@ $(document).on('click', '#dugmeOdjava', function(e) {
 			window.location.href= "index.html";
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			toastr.error( errorThrown);
+			alert("billOrders: " + errorThrown);
 		}	
 	});
 });

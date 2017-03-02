@@ -3,12 +3,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="js/index.js"> </script>
+<script type="text/javascript" src="index.js"> </script>
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/admin.css">
 
-<script type="text/javascript" src="js/userProfile.js"> </script> 
+<script type="text/javascript" src="userProfile.js"> </script> 
 
 </head>
 <body>
@@ -45,6 +45,11 @@
 		<input type="text" name="prezime" id="prezime" class="in-text" readonly="readonly"/>
 		
 		</br>
+		<!-- <label>Adresa </label>
+		<input type="text" name="adresa" id="adresa" class="in-text" readonly="readonly"/>
+		</br> -->
+		<label>Broj poseta </label>
+		<input type="text" name="brojPoseta" id="brojPoseta" class="in-text" readonly="readonly"/>
 		</div>
 		</br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -55,7 +60,18 @@
 	</div>
 	
 	</br></br>
+	<div name="divPrijatelji">
+	<button id="dodajPrijatelja" class="btn green">Dodaj prijatelja </button>
+	
+	<img src="lupa.png" alt="Mountain View" style="width:30px;height:30px;">
+	<input type="text"  placeholder="search" name="pretraziPrijatelja" id="pretraziPrijatelja" class="in-text"/>
+	</div>
+	
 
+<div>
+<ul  id="tabelaPrijatelja">
+<li>OLJAAAAAA </li> 
+</ul>
 </div>
 
 </div> 
