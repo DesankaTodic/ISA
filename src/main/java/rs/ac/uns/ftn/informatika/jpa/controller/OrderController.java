@@ -139,7 +139,6 @@ public class OrderController {
 			    RequestContextHolder.currentRequestAttributes();
 		HttpSession session= attr.getRequest().getSession(true);
 		User u = (User) session.getAttribute("korisnik");
-		Employee employee = employeeService.findById(u.getId());
 		surrogateOrder.setWaiter_id(u.getId());
 		//surrogateOrder.setRestaurant(employee.getRestaurant());
 		ArrayList<Drink> drinks = new ArrayList<Drink>();
@@ -215,7 +214,6 @@ public class OrderController {
 		Order foundedOrder = orderService.findOne(id);
 		if(u.getRole().equals("waiter")){
 			order.setWaiter_id(u.getId());
-			Employee employee = employeeService.findById(u.getId());
 			//order.setRestaurant(employee.getRestaurant());
 			ArrayList<Drink> drinks = new ArrayList<Drink>();
 			if(order.getDrinks()!=null && !order.getDrinks().isEmpty()){
@@ -258,7 +256,6 @@ public class OrderController {
 		Order foundedOrder = orderService.findOne(id);
 		if(u.getRole().equals("waiter")){
 			order.setWaiter_id(u.getId());
-			Employee employee = employeeService.findById(u.getId());
 			//order.setRestaurant(employee.getRestaurant());
 			ArrayList<Drink> drinks = new ArrayList<Drink>();
 			if(order.getDrinks()!=null && !order.getDrinks().isEmpty()){
@@ -359,6 +356,7 @@ public class OrderController {
 		
 		
 		String q= surrogateOrder.getDate().split("-")[1];
+		@SuppressWarnings("deprecation")
 		Date datum = new Date(Integer.parseInt(surrogateOrder.getDate().split("-")[0]),  Integer.parseInt(q), Integer.parseInt(surrogateOrder.getDate().split("-")[2]), Integer.parseInt(surrogateOrder.getTime().split(":")[0]), Integer.parseInt(surrogateOrder.getTime().split(":")[1]), Integer.parseInt("00"));
 		
 		order.setTimeOfOrder(datum);

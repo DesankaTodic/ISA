@@ -5,10 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
-import rs.ac.uns.ftn.informatika.jpa.domain.User;
 import rs.ac.uns.ftn.informatika.jpa.domain.users.Guest;
 import rs.ac.uns.ftn.informatika.jpa.repository.GuestRepository;
 
@@ -47,6 +44,7 @@ public class GuestServiceImpl implements GuestService {
 	}
 	
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List<Guest> findByFriends(List friends) {
 		return guestRepository.findByFriends(friends);

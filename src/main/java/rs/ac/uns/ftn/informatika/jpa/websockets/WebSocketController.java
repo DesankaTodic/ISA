@@ -3,23 +3,15 @@ package rs.ac.uns.ftn.informatika.jpa.websockets;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import rs.ac.uns.ftn.informatika.jpa.domain.Offer;
 import rs.ac.uns.ftn.informatika.jpa.domain.PurchaseOrder;
 import rs.ac.uns.ftn.informatika.jpa.domain.User;
-import rs.ac.uns.ftn.informatika.jpa.domain.users.RestaurantManager;
-import rs.ac.uns.ftn.informatika.jpa.service.ManagerService;
-import rs.ac.uns.ftn.informatika.jpa.service.OfferService;
 import rs.ac.uns.ftn.informatika.jpa.service.PurchaseOrderService;
 
 
@@ -30,12 +22,7 @@ public class WebSocketController {
 	Producer producer;
 	
 	@Autowired
-	private OfferService offerService;
-	@Autowired
 	private PurchaseOrderService purchaseService;
-	@Autowired
-	private ManagerService managerService;
-	
 	
 	@RequestMapping("/send/{topic}")
 	public String sender(@PathVariable String topic, @RequestParam String newOrder){

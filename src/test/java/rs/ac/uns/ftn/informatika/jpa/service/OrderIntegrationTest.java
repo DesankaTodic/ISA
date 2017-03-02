@@ -129,7 +129,6 @@ public class OrderIntegrationTest {
 		ArrayList<Employee> waiters = employeeService.getWaitersOfRestaurant("waiter", restaurant);
 		Employee waiter = waiters.get(0);
 		int money = 800;
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date dateOfBill = new Date();
 		Bill bill = new Bill();
 		bill.setOrderBill(order);
@@ -140,6 +139,7 @@ public class OrderIntegrationTest {
 		int sizeBefore = billBefore.size();
 		System.out.println(sizeBefore);
 		Bill addedBill = billService.addNew(bill);
+		System.out.println(addedBill.getBill());
 		ArrayList<Bill> billAfter = billService.findByWaiter(waiter);
 		int sizeAfter = billAfter.size();
 		System.out.println(sizeAfter);
@@ -248,8 +248,6 @@ public class OrderIntegrationTest {
 		ArrayList<Reservation> reservations = reservationService.findByIdGuest(guest);
 		Reservation reservation = reservations.get(0);
 		Restaurant restaurant = reservation.getIdRestaurant();
-		ArrayList<Employee> employees = employeeService.getWaitersOfRestaurant("waiter", restaurant);
-		Employee waiter = employees.get(0);
 		int restaurantRating = 3;
 		int serviceRating = 4;
 		int mealRating = 2;
@@ -265,6 +263,7 @@ public class OrderIntegrationTest {
 		int sizeBefore = ratingAllBefore.size();
 		System.out.println(sizeBefore);
 		RatingAll addedRatingAll = ratingAllService.addNew(ratingAll);
+		System.out.println(addedRatingAll.getMealRating());
 		ArrayList<RatingAll> ratingAllAfter =ratingAllService.findByRestaurant(restaurant);
 		int sizeAfter = ratingAllAfter.size();
 		System.out.println(sizeAfter);

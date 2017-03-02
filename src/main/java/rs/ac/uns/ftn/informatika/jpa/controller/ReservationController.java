@@ -25,7 +25,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import rs.ac.uns.ftn.informatika.jpa.domain.AssignReon;
-import rs.ac.uns.ftn.informatika.jpa.domain.OrderSurrogate;
 import rs.ac.uns.ftn.informatika.jpa.domain.Reon;
 import rs.ac.uns.ftn.informatika.jpa.domain.Reservation;
 import rs.ac.uns.ftn.informatika.jpa.domain.ReservedTables;
@@ -37,7 +36,6 @@ import rs.ac.uns.ftn.informatika.jpa.domain.users.Guest;
 import rs.ac.uns.ftn.informatika.jpa.service.AssignReonService;
 import rs.ac.uns.ftn.informatika.jpa.service.EmployeeService;
 import rs.ac.uns.ftn.informatika.jpa.service.GuestService;
-import rs.ac.uns.ftn.informatika.jpa.service.OrderService;
 import rs.ac.uns.ftn.informatika.jpa.service.ReservationService;
 import rs.ac.uns.ftn.informatika.jpa.service.ReservedTablesService;
 import rs.ac.uns.ftn.informatika.jpa.service.TableService;
@@ -68,8 +66,6 @@ public class ReservationController {
 	@Autowired
 	private AssignReonService assignReonService;
 	
-	@Autowired
-	private OrderService orderService;
 	
 
 	@RequestMapping(
@@ -83,8 +79,6 @@ public class ReservationController {
 		Tablee foundTable = tableService.findById(idStola);
 		
 		Reservation newReservation = null;
-
-		Long idChange = (long) -1;
 		Reservation neww = null;
 		
 		if(reservationService.findReservationByAll(reservation.getIdGuest(),reservation.getIdRestaurant(),reservation.getDate(),reservation.getTime(),reservation.getFlag()) == null){

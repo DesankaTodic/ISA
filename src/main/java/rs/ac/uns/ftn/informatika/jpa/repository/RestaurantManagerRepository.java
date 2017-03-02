@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import rs.ac.uns.ftn.informatika.jpa.domain.users.RestaurantManager;
-import java.lang.String;
-import java.util.List;
 
 public interface RestaurantManagerRepository extends PagingAndSortingRepository<RestaurantManager, Long> {
 	

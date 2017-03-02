@@ -167,7 +167,7 @@ public class GuestController {
 		
 		Guest changedGuest = guestService.update(foundedGuest, id);
 		
-		 
+		 System.out.println(changedGuest.getEmail());
 		return foundedGuest.getFriends();
 	}
 	
@@ -322,7 +322,8 @@ public class GuestController {
 		
 		
 		Guest changedGuest = guestService.update(foundedGuest, id);
-		
+
+		 System.out.println(changedGuest.getEmail());
 		 Guest returnGuest = guestService.findOne(idFriend);
 		return returnGuest.getFriends();
 	}

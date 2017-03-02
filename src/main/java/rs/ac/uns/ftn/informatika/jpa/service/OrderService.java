@@ -22,7 +22,8 @@ public interface OrderService {
 	public ArrayList<Order> findByRestaurant(Restaurant restaurant);
 	
 	public Order findById(Long id);
-	
+
+	@SuppressWarnings("rawtypes")
 	List<Order> findByDrinks(List drinks);
 	
 	public ArrayList<Order> findByReservation(Reservation reservation);

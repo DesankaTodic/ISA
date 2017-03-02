@@ -10,6 +10,10 @@ import rs.ac.uns.ftn.informatika.jpa.domain.User;
 @Entity
 public class SystemManager extends User implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Column(nullable = false)
 	private String name;
 	@Column(nullable = false)

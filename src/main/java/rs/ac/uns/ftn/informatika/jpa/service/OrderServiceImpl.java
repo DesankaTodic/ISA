@@ -44,6 +44,8 @@ public class OrderServiceImpl implements OrderService{
 	public Order findById(Long id) {
 		return orderRepository.findById(id);
 	}
+
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List<Order> findByDrinks(List drinks) {
 		return this.orderRepository.findByDrinks(drinks);

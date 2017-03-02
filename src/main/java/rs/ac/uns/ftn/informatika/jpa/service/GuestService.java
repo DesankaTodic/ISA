@@ -1,14 +1,8 @@
 package rs.ac.uns.ftn.informatika.jpa.service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
-import rs.ac.uns.ftn.informatika.jpa.domain.City;
-import rs.ac.uns.ftn.informatika.jpa.domain.User;
 import rs.ac.uns.ftn.informatika.jpa.domain.users.Guest;
 
 public interface GuestService {
@@ -23,6 +17,7 @@ public interface GuestService {
 
 	Guest findOne(Long id);
 
+	@SuppressWarnings("rawtypes")
 	List<Guest> findByFriends(List friends);
 
 	List<Guest> findGuestsByName(String name);

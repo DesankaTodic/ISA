@@ -9,7 +9,6 @@ import org.hamcrest.Matchers;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -24,9 +23,6 @@ import rs.ac.uns.ftn.informatika.jpa.domain.users.Guest;
 public class ReservationControllerTest {
 
 
-	@Autowired
-	private InvitationService invitationService;
-	
 	
 	@BeforeClass
     public static void setup() {

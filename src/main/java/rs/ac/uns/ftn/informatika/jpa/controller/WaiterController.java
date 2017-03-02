@@ -275,7 +275,6 @@ public class WaiterController {
 		String[] time = wantedTime.split(":");
 		
 		int hour = Integer.parseInt(time[0]);
-		int minut = Integer.parseInt(time[1]);
 		
 		List<ReservedTables> datetables = reservedTablesService.findReservedTablesByDate(wantedDate);
 		List<ReservedTables> timetables = new ArrayList<ReservedTables>();
@@ -283,8 +282,6 @@ public class WaiterController {
 		for(int i = 0; i<datetables.size(); i++){
 			String[] time2 = datetables.get(i).getTime().split(":");
 			int hour2 = Integer.parseInt(time2[0]);
-			int minut2 = Integer.parseInt(time2[1]);
-			
 			if((hour >= hour2 && hour<hour2+datetables.get(i).getDuration()) || 
 			(hour + reservation.getDuration() > hour2 && hour + reservation.getDuration()<=hour2+datetables.get(i).getDuration())){
 				timetables.add(datetables.get(i));

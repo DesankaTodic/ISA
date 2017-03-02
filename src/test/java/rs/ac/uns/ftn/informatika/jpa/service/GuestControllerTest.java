@@ -3,14 +3,12 @@ package rs.ac.uns.ftn.informatika.jpa.service;
 import static com.jayway.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -22,10 +20,6 @@ import rs.ac.uns.ftn.informatika.jpa.domain.users.Guest;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class GuestControllerTest {
-
-	@Autowired
-	private GuestService guestService;
-	
 	
 	@BeforeClass
     public static void setup() {

@@ -8,7 +8,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import rs.ac.uns.ftn.informatika.jpa.domain.Restaurant;
 import rs.ac.uns.ftn.informatika.jpa.domain.WorkSchedule;
-import rs.ac.uns.ftn.informatika.jpa.domain.users.Employee;
 
 public interface WorkScheduleRepository extends PagingAndSortingRepository<WorkSchedule, Long> {
 	

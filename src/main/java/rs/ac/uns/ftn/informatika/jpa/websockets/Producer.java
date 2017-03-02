@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
-import rs.ac.uns.ftn.informatika.jpa.domain.PurchaseOrder;
-
 @Component
 public class Producer {
 

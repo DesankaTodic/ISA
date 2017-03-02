@@ -1,7 +1,5 @@
 package rs.ac.uns.ftn.informatika.jpa.repository;
 
-import java.util.ArrayList;
-
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;

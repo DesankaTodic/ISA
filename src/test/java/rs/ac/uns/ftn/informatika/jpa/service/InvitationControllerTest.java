@@ -1,9 +1,5 @@
 package rs.ac.uns.ftn.informatika.jpa.service;
 
-import static com.jayway.restassured.RestAssured.given;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertNotNull;
-
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 import org.junit.BeforeClass;
@@ -23,8 +19,6 @@ import rs.ac.uns.ftn.informatika.jpa.domain.users.Guest;
 public class InvitationControllerTest {
 
 	
-	@Autowired
-	private InvitationService invitationService;
 	
 	
 	@Autowired
