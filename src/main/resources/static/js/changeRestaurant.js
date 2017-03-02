@@ -40,42 +40,6 @@ $(document).on('click','#restoran',function(e){
 });
 
 
-$(document).on('click','#lokacijaRestorana',function(e){
-	e.preventDefault();
-	
-	$('#content').empty();	
-	$('#ubaci_mapu').empty();
-	
-	$.ajax({
-		type : 'GET',
-		url :  '/restaurantManagerController/uzmiRestoranMenadzera',
-		contentType : 'application/json',
-		success : function(data){
-
-
-			$('#content').append('<div id="mica_mapa"></div>');
-			var dok = document.getElementById('mica_mapa');
-			//var uluru = {lat: 45.239630, lng: 19.840992};
-			var uluru = {lat: data.width, lng: data.height};
-			var map = new google.maps.Map(document.getElementById('mica_mapa'), {
-		        center: uluru,
-		        zoom: 8
-		      });
-			
-			var marker = new google.maps.Marker({
-		        position: uluru,
-		        map: map
-		      });
-			
-		    $('#ubaci_mapu').append(map);
-		},
-
-		error : function(XMLHttpRequest, textStatus, errorThrown) { 
-			toastr.error("AJAX ERROR: " + errorThrown);
-		}
-	});
-});
-
 $(document).on('click','#submitIzmenaRestorana',function(e){
 	e.preventDefault();
 	var name = $('#imeRestorana').val();
